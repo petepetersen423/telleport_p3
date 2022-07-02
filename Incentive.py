@@ -6,6 +6,7 @@ from st_aggrid import GridOptionsBuilder, AgGrid, GridUpdateMode, DataReturnMode
 import sys
 import streamlit as st
 from streamlit import cli as stcli
+from pathlib import Path
 
 
 def main():
@@ -40,11 +41,11 @@ def main():
 
     df.set_index("Account", inplace=True)
 
-    def transfer_eth(from_account, to_account, amount):
+    def transfer_eth(sender, recipient, amount):
         web3.eth.sendTransaction(
             {
-                "from": from_account,
-                "to": to_account,
+                "from": sender,
+                "to": recipient,
                 "value": amount,
             }
         )
@@ -58,23 +59,31 @@ def main():
         return img
 
     # get a private key from the user
-    st.title("Tellaport ETH Transfer Program")
-    st.subheader("Transfer ETH to a new account")
+    st.title("Tellaport Preferred Equity NFT Transfer")
+    st.subheader("Transfer your NFT's between accounts")
+    with st.expander("What is an NFT"):
+        st.write(Path("nft.md").read_text())
     st.write("This program will allow you to transfer ETH to a new account")
     st.write("Select a sender account from the list below")
-    sender = st.selectbox(
-        "Account", df.index + "    bal=" + df.Balance.astype(str) + ""
-    )
+    sender = st.selectbox("Sender Account", df.index)
 
     # get the address of the recipient
 
     st.write("Select the address of the recipient")
-    recipient = st.selectbox("Account", df.index + "(Recipient)")
+    recipient = st.selectbox("Recipient Account", df.index)
 
     # get the amount of tokens to be sent
 
     st.write("Enter the amount of tokens to be sent")
     amount = st.number_input("Amount", value=0)
+
+    if st.button("Transfer"):
+        transfer_eth(sender, recipient, amount)
+        st.write("Transfer complete")
+        st.write("You can share this transaction with the recipient by QR code")
+        image = qr_code(sender, recipient, amount)
+        image.save("QRCode.png")
+        st.image("QRCode.png", width=300)
 
     st.sidebar.subheader("Transaction details")
 
@@ -83,12 +92,6 @@ def main():
     st.sidebar.write("The amount of tokens to be sent is: " + str(amount))
 
     st.sidebar.subheader("QR Code")
-
-    st.sidebar.write("You can share this transaction with the recipient by QR code")
-
-    image = qr_code(sender, recipient, amount)
-    image.save("QRCode.png")
-    st.sidebar.image("QRCode.png", width=300)
 
 
 if __name__ == "__main__":
