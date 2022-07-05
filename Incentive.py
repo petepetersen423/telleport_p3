@@ -19,11 +19,9 @@ def main():
 
     accounts = web3.eth.accounts
 
-    #
-
     # create dataframe from accounts with balances
     df = pd.DataFrame(columns=["Account", "Balance", "Private Key", "Index"])
-    i = -1
+    i = -1  # index to match the Ganache`s accounts index`
 
     # for each account, get the balance and add it to the dataframe
 
@@ -42,6 +40,10 @@ def main():
     df.set_index("Account", inplace=True)
 
     def transfer_eth(sender, recipient, amount):
+        """
+        Transfer eth from sender to recipient
+        """
+
         web3.eth.sendTransaction(
             {
                 "from": sender,
@@ -52,6 +54,9 @@ def main():
 
     # build the QR code for the account and amount
     def qr_code(from_account, to_account, amount):
+        """
+        Generate a QR code for the given account and amount
+        """
 
         img = qrcode.make(to_account)
         # img.save(‘QR Code.png’)
@@ -92,11 +97,10 @@ def main():
     st.sidebar.write("The amount of tokens to be sent is: " + str(amount))
 
 
-#   st.sidebar.subheader("QR Code")
-
-
 if __name__ == "__main__":
     if st._is_running_with_streamlit:
+        # This is a Streamlit app, so we can use the Streamlit CLI to
+        # run the main function.
         main()
     else:
         sys.argv = ["streamlit", "run", sys.argv[0]]
