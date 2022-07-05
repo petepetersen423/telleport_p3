@@ -91,7 +91,8 @@ def main():
     st.sidebar.write("The selected recipient is: " + recipient)
     st.sidebar.write("The amount of tokens to be sent is: " + str(amount))
 
-    st.sidebar.subheader("QR Code")
+
+#   st.sidebar.subheader("QR Code")
 
 
 if __name__ == "__main__":
