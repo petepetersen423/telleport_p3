@@ -68,7 +68,9 @@ def main():
     st.subheader("Transfer your NFT's between accounts")
     with st.expander("What is an NFT"):
         st.write(Path("nft.md").read_text())
+
     st.write("This program will allow you to transfer ETH to a new account")
+
     st.write("Select a sender account from the list below")
     sender = st.selectbox("Sender Account", df.index)
 

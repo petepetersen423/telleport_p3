@@ -89,9 +89,9 @@ def filter_data(
 
 
 def main() -> None:
-    st.header("Tellaport Account Overview :moneybag: :dollar: :bar_chart:")
+    st.header("Tellaport Account Overview Dashboard")
 
-    uploaded_data = open("example.csv", "r")
+    uploaded_data = open("sample.csv", "r")
 
     df = pd.read_csv(uploaded_data)
 
