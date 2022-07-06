@@ -206,7 +206,7 @@ def main() -> None:
 
 if __name__ == "__main__":
     st.set_page_config(
-        "Fidelity Account View by Gerard Bentley",
+        "Teleport Account Overview Dashboard",
         "📊",
         initial_sidebar_state="expanded",
         layout="wide",
