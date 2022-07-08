@@ -47,6 +47,9 @@ from pathlib import Path
 
 This project includes three demo movies.
 
-1. ![NFT Application](NFT_App.mp4)  - UI demo if the transaction app in streamlit
-2. UI demo of the dashboard app in streamlit.
-3. A quick code review of the transaction app.
+1. (NFT_App.mp4)  - UI demo if the transaction app in streamlit
+2. (Portfoliio_Dashboard.mp4) - UI demo of the dashboard app in streamlit.
+3. (Incentive_app_code_review.mp4) -A quick code review of the transaction app.
+4. (Incentive.py) - The web3 transaction application
+5. (app.py) -  Sample porfolio dashboard application taken from the streamlit sample library that demonstrates the reusability and rapid prototyping that can be done.  
+6. (Sample.csv) -  portfolio data in the fidelity download form.

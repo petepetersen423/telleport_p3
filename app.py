@@ -1,7 +1,15 @@
+"""
+************************************************************************************************************************
+This file will be used to generate the dashboard. This code is based on the following tutorial:
+https://dash.plot.ly/getting-started and the following sample code from
+https://dash.plot.ly/dash-core-components.  The code in general was downloaded from the 
+streamlit sample website https://streamlit.io/gallery?category=finance-business 
+on 7-04-2022.  The code has been slightly modified to fit the needs of 
+this project.  This code is included for rapid prototyping purposes only and does not represent the work
+of the the Tellaport project authors.
+************************************************************************************************************************
+"""
 import functools
-
-# from pathlib import Path
-
 import streamlit as st
 from st_aggrid import AgGrid
 from st_aggrid.shared import JsCode

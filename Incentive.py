@@ -1,3 +1,10 @@
+'''
+This the the code that builds the transaction page for the user to send ether to 
+another account.  The user will need to enter the account they want to send, 
+the account they want to send to, and the amount of ether they want to send. It connects to the
+Ganache blockchain and sends the ether to the recipient account.
+'''
+
 from web3 import Web3
 import pandas as pd
 import qrcode
@@ -10,7 +17,9 @@ from pathlib import Path
 
 
 def main():
-
+'''
+This is the main function that runs the program.
+'''
     ganache_url = "http://127.0.0.1:7545"
     web3 = Web3(Web3.HTTPProvider(ganache_url))
 
@@ -63,7 +72,7 @@ def main():
         # img.show()
         return img
 
-    # get a private key from the user
+    # start the streamlit app
     st.title("Tellaport Preferred Equity NFT Transfer")
     st.subheader("Transfer your NFT's between accounts")
     with st.expander("What is an NFT"):
